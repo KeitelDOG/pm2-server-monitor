@@ -88,11 +88,11 @@ const app = new Vue({
             }
             const ips = this.servers[this.currentProject];
             ips.forEach(item => {
-                const socket = io(`ws://${item.ip}:${item.port}?interval=${this.interval}`, {
+                const socket = io(`${item.url}?interval=${this.interval}`, {
                     transports: ['websocket']
                 });
                 this.socketQueue.push(socket);
-                const statsEl = document.getElementById(`ip${item.ip}:${item.port}`);
+                const statsEl = document.getElementById(`url-${item.url}`);
                 socket.on('stats', data => {
                     // stats-panel-title
                     statsEl.querySelector('.hostname').textContent = this.getPathValue(data, 'totalData.hostname', 'host');

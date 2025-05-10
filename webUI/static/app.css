@@ -17,7 +17,9 @@ body {
 }
 
 .container {
-    width: 980px;
+    padding: 24px;
+    max-width: 1200px;
+    min-width: 480px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -78,8 +80,8 @@ i.iconfont {
     margin-left: 24px;
 }
 
-.stats-panel-title span.ipAddress {
-    float: right;
+.stats-panel-title div.separate-stats {
+    text-align: right;
 }
 
 .stats-panel-title .mem-icon {

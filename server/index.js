@@ -40,7 +40,6 @@ app.get('/config.js', (req, res) => {
   try {
     let jsScript = fs.readFileSync('./webUI/config.js', { encoding: 'utf8' });
     jsScript = jsScript.replace('MONITOR_URL', process.env.MONITOR_URL);
-    jsScript = jsScript.replace('MONITOR_PORT', process.env.MONITOR_PORT);
 
     res.setHeader('content-type', 'text/javascript');
     res.status(200).send(jsScript);

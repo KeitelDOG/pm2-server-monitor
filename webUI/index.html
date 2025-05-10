@@ -19,7 +19,7 @@
             </select>
         </div>
         <div id="wrap-stats">
-            <div class="stats-panel" v-for="item in getIps" v-bind:id="'ip' + item.ip + ':' + item.port">
+            <div class="stats-panel" v-for="item in getIps" v-bind:id="'url-' + item.url">
                 <div class="stats-panel-title">
                     <span title="Hostname" v-tippy="{ theme : 'mytheme' }">
                         <i class="iconfont icon-server"></i>
@@ -40,8 +40,10 @@
                         <i class="iconfont icon-node-js"></i>
                         <span class="nodev">-</span>
                     </span>
-                    <span class="ipAddress" title="Server Address" v-tippy="{ theme : 'mytheme' }">{{item.ip}}:{{item.port}}</span>
-                    <span class="godid" style="display: none" desc="god pid"></span>
+                    <div class="separate-stats">
+                        <span class="ipAddress" title="Server Address" v-tippy="{ theme : 'mytheme' }">{{item.url.slice(5)}}</span>
+                        <span class="godid" style="display: none" desc="god pid"></span>
+                    </div>
                 </div>
                 <div class="stats-panel-row">
                     <span class="app-name-wrap" title="App Name" v-tippy="{ theme : 'mytheme' }">
