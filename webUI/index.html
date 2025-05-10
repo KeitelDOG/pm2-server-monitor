@@ -53,17 +53,9 @@
                         <i class="cpu-icon iconfont icon-chip"></i>
                         <span class="cpu">0%</span>
                     </span>
-                    <span title="Process Memory" v-tippy="{ theme : 'mytheme' }">
+                    <span title="Processes Memory" v-tippy="{ theme : 'mytheme' }">
                         <i class="mem-icon iconfont icon-memory-chip"></i>
                         <span class="memory">0B</span>
-                    </span>
-                    <span title="Restarts" v-tippy="{ theme : 'mytheme' }">
-                        <i class="restart-icon iconfont icon-undo"></i>
-                        <span class="restart">0</span>
-                    </span>
-                    <span title="Runtime" v-tippy="{ theme : 'mytheme' }">
-                        <i class="time-icon iconfont icon-time"></i>
-                        <span class="runtime">0s</span>
                     </span>
                     <button class="btn-detail" @click="item.show = !item.show" title="Detail" v-tippy="{ theme : 'mytheme' }">
                         <i v-bind:style="item.show ? 'transform: rotate(-135deg);' : ''"></i>

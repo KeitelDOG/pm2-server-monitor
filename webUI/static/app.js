@@ -11,7 +11,7 @@ const app = new Vue({
         /**
          * 服务器传送数据的间隔时间
          */
-        interval: 1000,
+        interval: 5000,
 
         /**
          * 服务器信息列表
@@ -88,7 +88,7 @@ const app = new Vue({
             }
             const ips = this.servers[this.currentProject];
             ips.forEach(item => {
-                const socket = io(`ws://${item.ip}:${item.port + 3000}?interval=${this.interval}`, {
+                const socket = io(`ws://${item.ip}:${item.port}?interval=${this.interval}`, {
                     transports: ['websocket']
                 });
                 this.socketQueue.push(socket);
@@ -123,8 +123,8 @@ const app = new Vue({
                     }
                     
                     statsEl.querySelector('.memory').textContent = this.getPathValue(data, 'totalData.memory', '0B');
-                    statsEl.querySelector('.restart').textContent = this.getPathValue(data, 'totalData.restart', '0');
-                    statsEl.querySelector('.runtime').textContent = this.getPathValue(data, 'totalData.totalUptime', '0s');
+                    // statsEl.querySelector('.restart').textContent = this.getPathValue(data, 'totalData.restart', '0');
+                    // statsEl.querySelector('.runtime').textContent = this.getPathValue(data, 'totalData.totalUptime', '0s');
 
                     // stats-panel-list
                     let html = '';
