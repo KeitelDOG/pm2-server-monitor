@@ -21,7 +21,7 @@ const checkAuthentication = (req, res, next) => {
 // 2- /index.html
 // 3- express static on ../webUI
 // 1-
-app.get('/', (req, res) => {
+app.get('/pm2', (req, res) => {
   res.status(200)
     .send({
       server: 'AVP PM2 Monitor Service',
@@ -32,13 +32,13 @@ app.get('/', (req, res) => {
     });
 });
 // 2-
-app.get('/index.html', (req, res) => {
+app.get('/pm2/index.html', (req, res) => {
   res.status(404).send('File not found');
 });
 
-app.get('/config.js', (req, res) => {
+app.get('/pm2/config.js', (req, res) => {
   try {
-    let jsScript = fs.readFileSync('./webUI/config.js', { encoding: 'utf8' });
+    let jsScript = fs.readFileSync('./webUI/pm2/config.js', { encoding: 'utf8' });
     jsScript = jsScript.replace('MONITOR_URL', process.env.MONITOR_URL);
 
     res.setHeader('content-type', 'text/javascript');
@@ -53,11 +53,11 @@ app.get('/config.js', (req, res) => {
 app.use(express.static(path.join(__dirname, '../webUI')));
 
 // WEB ENDPOINTS --
-app.get('/pm2-monitor/:key', checkAuthentication, (req, res) => {
+app.get('/pm2/monitor/:key', checkAuthentication, (req, res) => {
   try {
     let textHTML = fs.readFileSync('./webUI/index.html', { encoding: 'utf8' });
     textHTML = textHTML.replace(/PM2 Server Monitor/gm, 'Avantaj Pam - PM2 Server Monitor');
-    textHTML = textHTML.replace(/="\.\//gm, '="/');
+    textHTML = textHTML.replace(/="\.\//gm, '="/pm2/');
 
     res.setHeader('content-type', 'text/html');
     res.status(200).send(textHTML);
