@@ -27,7 +27,7 @@ app.get('/pm2', (req, res) => {
       server: 'AVP PM2 Monitor Service',
       status: 'Success',
       endpoints: [
-        '/pm2-monitor'
+        '/pm2/monitor'
       ],
     });
 });
